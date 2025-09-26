@@ -1,222 +1,150 @@
-/* ==========================
-   Theme Variables
-   ========================== */
-
-:root {
-    --bg-color: #ffffff;
-    --text-color: #222222;
-    --heading-color: #111111;
-    --primary-color: #0d6efd;
-    --secondary-color: #6c757d;
-    --border-color: #e5e5e5;
-    --footer-bg: #f9f9f9;
-    --footer-text: #555555;
-    --transition-speed: 0.3s;
-}
-
-[data-theme="dark"] {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --heading-color: #ffffff;
-    --primary-color: #66b2ff;
-    --secondary-color: #aaaaaa;
-    --border-color: #333333;
-    --footer-bg: #1a1a1a;
-    --footer-text: #cccccc;
-}
-
-
-/* ==========================
-   Base Styles
-   ========================== */
+/* Reset & base */
 
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    background: var(--bg-color);
-    color: var(--text-color);
-    font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    margin: 0;
-    padding-top: 56px;
-    /* offset for fixed navbar */
-    transition: background var(--transition-speed), color var(--transition-speed);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    color: var(--heading-color);
-    font-weight: 600;
-    margin-bottom: 15px;
-    transition: color var(--transition-speed);
-}
-
-a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color var(--transition-speed);
-}
-
-a:hover {
-    color: var(--secondary-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
 }
 
 
-/* ==========================
-   Navbar
-   ========================== */
+/* Sticky header */
 
-.navbar {
-    background: var(--bg-color) !important;
-    border-bottom: 1px solid var(--border-color);
-    transition: background var(--transition-speed), border var(--transition-speed);
-    z-index: 1030;
-    /* ensure navbar stays above other content */
-}
-
-.navbar .nav-link {
-    color: var(--text-color) !important;
-    font-weight: 500;
-    transition: color var(--transition-speed);
-}
-
-.navbar .nav-link.active {
-    font-weight: 600;
-    color: var(--primary-color) !important;
+.header {
+    position: sticky;
+    top: 0;
+    background: white;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    z-index: 1000;
 }
 
 
-/* Toggle Button */
+/* Container for nav content */
 
-#theme-toggle {
-    border: 1px solid var(--border-color);
-    background: transparent;
-    color: var(--text-color);
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: background var(--transition-speed), color var(--transition-speed), border var(--transition-speed);
-}
-
-#theme-toggle:hover {
-    background: var(--primary-color);
-    color: #fff;
-}
-
-
-/* ==========================
-   Hero / Carousel
-   ========================== */
-
-.carousel-item img {
-    height: 420px;
-    object-fit: cover;
-}
-
-.carousel-caption {
-    background: rgba(0, 0, 0, 0.55);
-    padding: 20px;
-    border-radius: 8px;
-    backdrop-filter: blur(4px);
-}
-
-.carousel-caption h5 {
-    color: #fff;
-    font-size: 1.75rem;
-    font-weight: 600;
-}
-
-.carousel-caption p {
-    color: #ddd;
-    font-size: 1rem;
-}
-
-
-/* ==========================
-   Sections
-   ========================== */
-
-.section {
-    padding: 70px 0;
-}
-
-.section h2 {
-    color: var(--primary-color);
-    margin-bottom: 25px;
-    font-size: 2rem;
-    text-align: center;
-}
-
-.section p {
-    max-width: 800px;
+.container {
+    max-width: 1200px;
     margin: 0 auto;
-    font-size: 1.1rem;
-    line-height: 1.7;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+}
+
+
+/* Logo */
+
+.logo img {
+    height: 40px;
+    cursor: pointer;
+    user-select: none;
+}
+
+
+/* Navigation menu */
+
+.nav-menu {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-menu a {
+    position: relative;
+    text-decoration: none;
+    color: #1f2937;
+    /* dark gray */
+    font-weight: 600;
+    font-size: 16px;
+    padding: 4px 0;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background: #0070f3;
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+    color: #0070f3;
+}
+
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
+    width: 100%;
+}
+
+
+/* Theme toggle button */
+
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #1f2937;
+    user-select: none;
+    transition: color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    color: #0070f3;
+}
+
+
+/* Dark theme */
+
+body.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-theme .header {
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 8px rgba(255 255 255 / 0.1);
+}
+
+body.dark-theme .nav-menu a {
+    color: #e0e0e0;
+}
+
+body.dark-theme .nav-menu a:hover,
+body.dark-theme .nav-menu a.active {
+    color: #3ea6ff;
+}
+
+body.dark-theme .nav-menu a:hover::after,
+body.dark-theme .nav-menu a.active::after {
+    background: #3ea6ff;
+}
+
+body.dark-theme .theme-toggle {
+    color: #e0e0e0;
+}
+
+body.dark-theme .theme-toggle:hover {
+    color: #3ea6ff;
+}
+
+
+/* Section styles for demo */
+
+main section {
+    min-height: 100vh;
+    padding: 60px 24px;
     text-align: center;
-}
-
-
-/* ==========================
-   Cards (Services & Blogs)
-   ========================== */
-
-.card {
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform var(--transition-speed), border var(--transition-speed);
-}
-
-.card:hover {
-    transform: translateY(-6px);
-    border-color: var(--primary-color);
-}
-
-.card img {
-    height: 200px;
-    object-fit: cover;
-}
-
-.card-body {
-    padding: 20px;
-}
-
-.card-title {
-    color: var(--heading-color);
-    font-size: 1.25rem;
-    margin-bottom: 10px;
-}
-
-.card-text {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: var(--text-color);
-}
-
-
-/* ==========================
-   Footer
-   ========================== */
-
-footer {
-    background: var(--footer-bg);
-    color: var(--footer-text);
-    padding: 30px 0;
-    margin-top: 40px;
-    text-align: center;
-    transition: background var(--transition-speed), color var(--transition-speed);
-}
-
-footer a {
-    color: var(--primary-color);
-    transition: color var(--transition-speed);
-}
-
-footer a:hover {
-    color: var(--secondary-color);
-    text-decoration: underline;
+    border-bottom: 1px solid #eee;
 }

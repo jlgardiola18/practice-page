@@ -1,26 +1,7 @@
-const toggleBtn = document.getElementById("theme-toggle");
-const root = document.documentElement;
+function toggleTheme() {
+    const body = document.body;
+    const btn = document.querySelector('.theme-toggle');
 
-if (localStorage.getItem("theme") === "dark") {
-    root.setAttribute("data-theme", "dark");
-    toggleBtn.textContent = "☀️";
+    body.classList.toggle('dark-theme');
+    btn.textContent = body.classList.contains('dark-theme') ? '☀️' : '🌙';
 }
-
-toggleBtn.addEventListener("click", () => {
-    if (root.getAttribute("data-theme") === "dark") {
-        root.removeAttribute("data-theme");
-        localStorage.setItem("theme", "light");
-        toggleBtn.textContent = "🌙";
-    } else {
-        root.setAttribute("data-theme", "dark");
-        localStorage.setItem("theme", "dark");
-        toggleBtn.textContent = "☀️";
-    }
-});
-
-const navLinks = document.querySelectorAll(".nav-link");
-navLinks.forEach(link => {
-    if (link.href === window.location.href) {
-        link.classList.add("active");
-    }
-});
