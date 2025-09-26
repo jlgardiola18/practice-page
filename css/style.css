@@ -1,5 +1,4 @@
 /* Reset & base */
-
 * {
     margin: 0;
     padding: 0;
@@ -13,9 +12,7 @@ body {
     line-height: 1.6;
 }
 
-
 /* Sticky header */
-
 .header {
     position: sticky;
     top: 0;
@@ -24,9 +21,7 @@ body {
     z-index: 1000;
 }
 
-
 /* Container for nav content */
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -37,28 +32,21 @@ body {
     height: 60px;
 }
 
-
 /* Logo */
-
 .logo img {
-    height: 40px;
+    height: 30px; /* smaller logo */
     cursor: pointer;
     user-select: none;
 }
 
-
-/* Nav group contains nav links + toggle */
-
+/* Nav group */
 .nav-group {
     display: flex;
     align-items: center;
     gap: 75px;
-    /* Even spacing between links and toggle */
 }
 
-
 /* Nav links */
-
 .nav-link {
     position: relative;
     text-decoration: none;
@@ -76,14 +64,14 @@ body {
     left: 0;
     height: 2px;
     width: 0%;
-    background: #0070f3;
+    background: #FFD700; /* yellow underline */
     transition: width 0.3s ease;
     border-radius: 2px;
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: #0070f3;
+    color: #FFD700; /* yellow text */
 }
 
 .nav-link:hover::after,
@@ -91,9 +79,7 @@ body {
     width: 100%;
 }
 
-
 /* Theme toggle button */
-
 .theme-toggle {
     background: none;
     border: none;
@@ -105,12 +91,10 @@ body {
 }
 
 .theme-toggle:hover {
-    color: #0070f3;
+    color: #FFD700; /* yellow hover */
 }
 
-
 /* Dark theme */
-
 body.dark-theme {
     background-color: #121212;
     color: #e0e0e0;
@@ -127,12 +111,12 @@ body.dark-theme .nav-link {
 
 body.dark-theme .nav-link:hover,
 body.dark-theme .nav-link.active {
-    color: #3ea6ff;
+    color: #FFD700; /* yellow in dark mode */
 }
 
 body.dark-theme .nav-link:hover::after,
 body.dark-theme .nav-link.active::after {
-    background: #3ea6ff;
+    background: #FFD700; /* yellow underline */
 }
 
 body.dark-theme .theme-toggle {
@@ -140,12 +124,10 @@ body.dark-theme .theme-toggle {
 }
 
 body.dark-theme .theme-toggle:hover {
-    color: #3ea6ff;
+    color: #FFD700; /* yellow hover */
 }
 
-
 /* Section styles for demo */
-
 main section {
     min-height: 100vh;
     padding: 60px 24px;
